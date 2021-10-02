@@ -134,7 +134,7 @@ const Invoices = () => (
           </div>
           <div className="flex-grow pl-4">
             <h2 className="font-bold  text-gray-900 mb-1 text-xl">Recurring Nightmares</h2>
-            <p className="leading-relaxed max-w-md opacity-90">Send the same invoices to the same customers every week. Either they write down customer's payment information or they enter it every time.</p>
+            <p className="leading-relaxed max-w-md opacity-90">Send the same invoices to the same customers every week. Either merchants write down customer's payment information or they enter it every time.</p>
           </div>
         </div>
         <div className="flex relative pb-12">
@@ -149,7 +149,7 @@ const Invoices = () => (
           </div>
           <div className="flex-grow pl-4">
             <h2 className="font-bold text-xl text-gray-900 mb-1">Bleeding edge</h2>
-            <p className="leading-relaxed max-w-md opacity-90">Early architecture investments into Ember.js led to growing pains when integrating the Invoices product into the shared dashboard.</p>
+            <p className="leading-relaxed max-w-md opacity-90">Early architecture investments into Ember.js led to growing pains when integrating the Invoices product into the shared ecosystem.</p>
           </div>
         </div>
         <div className="flex relative pb-12">
@@ -163,7 +163,7 @@ const Invoices = () => (
           </div>
           <div className="flex-grow pl-4">
             <h2 className="font-bold mb-1 text-xl">Too Square</h2>
-            <p className="leading-relaxed max-w-md opacity-90">Due to competing internal projects at times I was challanged to be the only person in the company actively working on Invoices. </p>
+            <p className="leading-relaxed max-w-md opacity-90">Due to competing internal projects at times I was entrusted to be the sole person in the company actively working on Invoices. </p>
           </div>
         </div>
       </div>
@@ -216,7 +216,7 @@ const Invoices = () => (
         </div>
         <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
           <h2 className="font-bold text-gray-900 mb-1 text-xl">Wagon Wheel <span className="text-white-25 hidden 768px:inline font-normal opacity-0 group-hover:opacity-100">- Old Crow Medicine Show</span></h2>
-          <p className="leading-relaxed opacity-90">Part of a larger ecosystem I got to design and impliment invoice instances of customers, cards, items, signatures, etc... which led to everyone getting to the destination faster.</p>
+          <p className="leading-relaxed opacity-90">Part of a larger ecosystem I got to design and implement instances of customers, cards, items, signatures, etc...  building a better invoicing product faster.</p>
         </div>
       </div>
     </div>
@@ -234,7 +234,7 @@ const Invoices = () => (
         </div>
         <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
           <h2 className="font-bold text-gray-900 mb-1 text-xl">Regulate <span className="text-white-25 hidden 768px:inline font-normal opacity-0 group-hover:opacity-100">- Warren G</span></h2>
-          <p className="leading-relaxed opacity-90">Simplifiying local, state, federal taxes is almost as oddly satisfying as sorting out international timezones.</p>
+          <p className="leading-relaxed opacity-90">Simplifiying local, state and federal taxes is almost as oddly satisfying as sorting out international timezones.</p>
         </div>
       </div>
     </div>

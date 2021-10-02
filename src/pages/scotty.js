@@ -65,7 +65,7 @@ const Scotty = () => (
               <motion.div variants={item} key="hero-p">
                 <p style={{textShadow: "rgba(0, 0, 0, 0.05) 2px 2px"}} 
                   className="text-white-50 text-base font-normal 768px:text-lg font-serif leading-8 z-10 mb-8 pr-4 max-w-md">
-                  As a UX designer and full-stack developer, I metamorphisized a rigid legacy design into a flexible library of responsive modular components.  
+                  As a UX designer and full-stack developer, I metamorphosized a rigid legacy design into a flexible library of responsive modular components.  
                 </p>
               </motion.div>
               <motion.div key="hero-cta" variants={item}>
@@ -202,7 +202,7 @@ const Scotty = () => (
         </div>
         <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
           <h2 className="font-bold mb-1 text-xl">Step By Step <span className="text-white-25 hidden 768px:inline font-normal opacity-0 group-hover:opacity-100">- New Kids On The Block</span></h2>
-          <p className="leading-relaxed opacity-75">Worked with the client to identify existing content structures and designs elements that they wanted to recycle and used that information to produce a series of wireframes that would guide the development process.</p>
+          <p className="leading-relaxed opacity-75">Identified existing content structures and common design elements. Then repurposed and reimagined them into a series of wireframes that guided the development process.</p>
         </div>
       </div>
     </div>
@@ -219,7 +219,7 @@ const Scotty = () => (
         </div>
         <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
           <h2 className="font-bold mb-1 text-xl">Gettin' Jiggy Wit It <span className="text-white-25 hidden 768px:inline font-normal opacity-0 group-hover:opacity-100">- Will Smith</span></h2>
-          <p className="leading-relaxed opacity-75">The goal from the very first tee was for customers to be able to leverage any device or browser, from the latest phone or tablet to an old work computer. Even Rodney Dangerfield should be able to use his high-tech golf bag.</p>
+          <p className="leading-relaxed opacity-75">The goal from the very first tee was for customers to be able to leverage any device or browser, from the latest phone to Rodney Dangerfield's golf bag.</p>
         </div>
       </div>
     </div>

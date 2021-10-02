@@ -65,7 +65,7 @@ const Fire = () => (
               <motion.div variants={item} key="hero-p">
                 <p style={{textShadow: "rgba(0, 0, 0, 0.05) 2px 2px"}} 
                   className="text-brown text-base font-normal 768px:text-lg font-serif leading-8 z-10 mb-8 pr-4 max-w-md">
-                  As a UX designer and full-stack developer, I worked alongside the State of California's Department of Forestry and Fire Protection to replace a legacy paper process with a modern web-based solution that manages emergency data in real-time.
+                  As a UX designer and full-stack developer, I rescued the State of California's Department of Forestry and Fire Protection from a legacy paper process with a modern web-based solution that manages real-time emergency data.
                 </p>
               </motion.div>
               <motion.div key="hero-cta" variants={item}>
@@ -121,7 +121,7 @@ const Fire = () => (
           </div>
           <div className="flex-grow pl-4">
             <h2 className="font-bold text-gray-900 mb-1 text-xl">Eureka</h2>
-            <p className="leading-relaxed max-w-md">With accelerating climate change, historic droughts and inversely decreasing budgets California has been battling fires upwind for decades.</p>
+            <p className="leading-relaxed max-w-md">California has been battling fires upwind for decades against accelerating climate change, historic droughts and inversely decreasing budgets.</p>
           </div>
         </div>
         <div className="flex relative pb-12">
@@ -135,7 +135,7 @@ const Fire = () => (
           </div>
           <div className="flex-grow pl-4">
             <h2 className="font-bold  text-gray-900 mb-1 text-xl">Paper Process</h2>
-            <p className="leading-relaxed max-w-md">Critical portions of the fire incident management process were simply bogged down by unreadable handwriting of tired personnel in the field.</p>
+            <p className="leading-relaxed max-w-md">Critical portions of the fire incident management process was bogged down by unreadable handwriting of tired personnel in the field.</p>
           </div>
         </div>
         <div className="flex relative pb-12">
@@ -149,7 +149,7 @@ const Fire = () => (
           </div>
           <div className="flex-grow pl-4">
             <h2 className="font-bold text-xl text-gray-900 mb-1">Responsiveness</h2>
-            <p className="leading-relaxed max-w-md">In emergency situtations, responders and residents need accurate real-time data on any device or browser while connectivity may be limited.</p>
+            <p className="leading-relaxed max-w-md">In emergency situtations, responders and residents need accurate real-time data on any device and where connectivity may be limited.</p>
           </div>
         </div>
         <div className="flex relative pb-12">
@@ -216,7 +216,7 @@ const Fire = () => (
         </div>
         <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
           <h2 className="font-bold text-gray-900 mb-1 text-xl">Maps <span className="text-white-25 hidden 768px:inline font-normal opacity-0 group-hover:opacity-100">- Yeah Yeah Yeahs</span></h2>
-          <p className="leading-relaxed">Navigated the technical and financial issues around the scaling and spiking of request volume. Migrated the public facing Google Maps API implimentation to ESRI ArcGIS Javascript API and advised to add a caching layer.</p>
+          <p className="leading-relaxed">Navigated the technical and financial issues around the scaling and spiking of request volume. Migrated the public facing Google Maps API implementation to ESRI ArcGIS Javascript API.</p>
         </div>
       </div>
     </div>
@@ -233,7 +233,7 @@ const Fire = () => (
         </div>
         <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
           <h2 className="font-bold text-gray-900 mb-1 text-xl">Baby Got Back <span className="text-white-25 hidden 768px:inline font-normal opacity-0 group-hover:opacity-100">- Sir Mix-A-Lot</span></h2>
-          <p className="leading-relaxed">Critical fire incident updates can now be submitted from the field and be approved by managers and local authorities within a custom dashboard within the backoffice of an Umbraco Content Management System.</p>
+          <p className="leading-relaxed">Critical fire incident updates can now be submitted from the field and be approved by managers and local authorities within the backoffice of an Umbraco Content Management System.</p>
         </div>
       </div>
     </div>
