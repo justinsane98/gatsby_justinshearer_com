@@ -6,7 +6,7 @@ import hand from "/public/images/hand-square-invoices.png"
 import problem from "/public/images/snail.mp4"
 import solution from "/public/images/fast.mp4"
 import logo from "/public/images/logo-square-brand.png"
-import watches from "/public/images/watches.png"
+import helaine from "/public/images/invoices-helaine.jpg"
 
 const duration = 0.5
 
@@ -114,9 +114,9 @@ const Invoices = () => (
             <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
           </div>
           <div className="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-25 inline-flex items-center justify-center text-white relative z-10">
-            <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
-            </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-1.14.76a2 2 0 01-2.22 0l-1.14-.76" />
+          </svg>
           </div>
           <div className="flex-grow pl-4">
             <h2 className="font-bold text-gray-900 mb-1 text-xl">Lost in the Mail</h2>
@@ -128,9 +128,9 @@ const Invoices = () => (
             <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
           </div>
           <div className="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-25 inline-flex items-center justify-center text-white relative z-10">
-            <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-            </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 15v-1a4 4 0 00-4-4H8m0 0l3 3m-3-3l3-3m9 14V5a2 2 0 00-2-2H6a2 2 0 00-2 2v16l4-2 4 2 4-2 4 2z" />
+          </svg>
           </div>
           <div className="flex-grow pl-4">
             <h2 className="font-bold  text-gray-900 mb-1 text-xl">Recurring Nightmares</h2>
@@ -142,10 +142,9 @@ const Invoices = () => (
             <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
           </div>
           <div className="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-25 inline-flex items-center justify-center text-white relative z-10">
-          <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
-              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-              <path d="M22 4L12 14.01l-3-3"></path>
-            </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+          </svg>
           </div>
           <div className="flex-grow pl-4">
             <h2 className="font-bold text-xl text-gray-900 mb-1">Bleeding edge</h2>
@@ -157,9 +156,9 @@ const Invoices = () => (
             <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
           </div>
           <div className="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-25 inline-flex items-center justify-center text-white relative z-10">
-            <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-            </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+          </svg>
           </div>
           <div className="flex-grow pl-4">
             <h2 className="font-bold mb-1 text-xl">Too Square</h2>
@@ -167,8 +166,10 @@ const Invoices = () => (
           </div>
         </div>
       </div>
-      <div className="1024px:w-2/3 1024px:mt-0 mt-12 flex">
-        <img src={watches} alt="step" className="object-center object-contain"/>
+      <div className="1024px:w-2/3 1024px:mt-0 mt-12 1024px:pl-12 flex flex-col justify-center">
+        <div>
+          <img src={helaine} alt="step" className="rounded-lg object-cover"/>
+        </div>
       </div>   
     </div>
   </div>
