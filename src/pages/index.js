@@ -5,7 +5,7 @@ import Lyric from "../components/Lyric";
 import Title from "../components/Title";
 import { motion, AnimatePresence } from 'framer-motion'
 import TransitionLink from "gatsby-plugin-transition-link";
-import bg from "/public/images/home5px.gif"
+import bg from "/public/images/rick.mp4"
 
 const props = data.properties[0];
 
@@ -77,11 +77,21 @@ const Index = () => (
           exit="exit"
           className="absolute bg-cover top-0 left-0 right-0 bottom-0"
           style={{
-            backgroundImage: "url("+ bg +")",
-            backgroundPosition: "top center",
             zIndex: -2
           }}
-        />
+        >
+            <video
+              autoPlay={true}
+              loop={true}
+              muted={true}
+              className="object-cover object-center h-full w-full"
+            >
+              <source
+                src={bg}
+                type="video/mp4"
+              />
+          </video>
+        </motion.div>
         <motion.div key="content" variants={variants}
                 initial="initial"
                 animate="enter"

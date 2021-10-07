@@ -3,7 +3,7 @@ import Layout from "../components/Layout"
 import Highlight from "../components/Highlight";
 import Heading from "../components/Heading";
 import { motion, AnimatePresence } from 'framer-motion'
-import bg from "/public/images/about5px.gif"
+import dance from "/public/images/dance.mp4"
 import TransitionLink from "gatsby-plugin-transition-link";
 
 const duration = 0.5
@@ -53,18 +53,27 @@ const About = () => (
     <Layout>
     <div className="px-4 425px:px-8 768px:px-12 text-center mx-auto 1024px:w-3/4 1200px:w-3/5 1400px:w-1/3 1600px:w-1/2">
     <AnimatePresence>
-      <motion.div variants={variants}
-            key="bg"
-            initial="initial"
-            animate="enter"
-            exit="exit"
-            className="absolute bg-cover top-0 left-0 right-0 bottom-0"
-            style={{
-              backgroundImage: "url("+ bg +")",
-              backgroundPosition: "top center",
-              zIndex: -2
-            }}
-          />
+    <motion.div key="bg" variants={variants}
+          initial="initial"
+          animate="enter"
+          exit="exit"
+          className="absolute bg-cover top-0 left-0 right-0 bottom-0"
+          style={{
+            zIndex: -2
+          }}
+        >
+            <video
+              autoPlay={true}
+              loop={true}
+              muted={true}
+              className="object-cover object-center h-full w-full"
+            >
+              <source
+                src={dance}
+                type="video/mp4"
+              />
+          </video>
+        </motion.div>
         
         <motion.div key="content" variants={container}>
           <div className="min-h-screen flex flex-col justify-center">
@@ -75,7 +84,7 @@ const About = () => (
                 <p 
                   style={{textShadow: "rgba(0, 0, 0, 0.2) 2px 2px"}} 
                   className="text-white text-base font-normal 768px:text-lg font-serif leading-8 768px:leading-10 z-10 mb-2">
-                  I am a creative <Highlight content="UI/UX"/> designer, seasoned <Highlight content="full-stack"/> web-developer and a data driven <Highlight content="generalist"/> who is always looking for an interesting problem to solve. Back in the early days of <TransitionLink to="/brand/" enter={{ length: duration }} exit={{ length: duration }} className="bg-pink-50 hover:bg-pink color-white px-1 mx-0 text-lg 768px:text-xl font-display inline-block hover:animate-none">Square</TransitionLink>, I got to help grow an amazing <Highlight content="brand"/> and re-imagine the concept of <TransitionLink to="/invoices/" enter={{ length: duration }} exit={{ length: duration }} className="bg-pink-50 hover:bg-pink color-white px-1 mx-0 text-lg 768px:text-xl font-display inline-block hover:animate-none">Invoices</TransitionLink>. More recently I worked with the legendary golfclub craftsman <TransitionLink to="/scotty/" enter={{ length: duration }} exit={{ length: duration }} className="bg-pink-50 hover:bg-pink color-white px-1 mx-0 text-lg 768px:text-xl font-display inline-block hover:animate-none">Scotty Cameron</TransitionLink> to improve his performance while assisting the State of <TransitionLink to="/fire/" enter={{ length: duration }} exit={{ length: duration }} className="bg-pink-50 hover:bg-pink color-white px-1 mx-0 text-lg 768px:text-xl font-display inline-block hover:animate-none">California</TransitionLink> put out some fires. If you have a problem that is keeping you up at night but you can still manage to <Highlight content="laugh"/> about it...
+                  I am a creative <Highlight content="UI/UX"/> designer, seasoned <Highlight content="full-stack"/> web-developer and a data driven <Highlight content="generalist"/> who is always looking for an interesting problem to solve. Back in the early days of <TransitionLink to="/brand/" enter={{ length: duration }} exit={{ length: duration }} className="bg-pink-50 hover:bg-pink color-white px-1 mx-0 text-lg 768px:text-xl font-display inline-block hover:animate-none">Square</TransitionLink>, I got to help grow an amazing brand and re-imagine the concept of <TransitionLink to="/invoices/" enter={{ length: duration }} exit={{ length: duration }} className="bg-pink-50 hover:bg-pink color-white px-1 mx-0 text-lg 768px:text-xl font-display inline-block hover:animate-none">Invoices</TransitionLink>. More recently I worked with the legendary golfclub craftsman <TransitionLink to="/scotty/" enter={{ length: duration }} exit={{ length: duration }} className="bg-pink-50 hover:bg-pink color-white px-1 mx-0 text-lg 768px:text-xl font-display inline-block hover:animate-none">Scotty Cameron</TransitionLink> to improve his performance while assisting the State of <TransitionLink to="/fire/" enter={{ length: duration }} exit={{ length: duration }} className="bg-pink-50 hover:bg-pink color-white px-1 mx-0 text-lg 768px:text-xl font-display inline-block hover:animate-none">California</TransitionLink> put out some fires. If you have a problem that is keeping you up at night...
                 </p>
             </motion.div>
             <motion.div key="cta" variants={item} className="pt-4">

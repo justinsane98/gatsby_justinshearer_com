@@ -3,7 +3,7 @@ import Layout from "../components/Layout"
 import data from '../data/data'
 import Heading from "../components/Heading"
 import { motion, AnimatePresence } from 'framer-motion'
-import bg from "/public/images/contact5px.gif"
+import callme from "/public/images/callme.mp4"
 import Form from "../components/Form"
 
 const props = data.properties[1];
@@ -51,7 +51,7 @@ const call = {
   enter: {
     opacity: 1,
     transition: {
-      delay: duration*10,
+      delay: duration*5,
       duration: duration*3
     },
   },
@@ -65,18 +65,27 @@ const Contact = () => (
     <Layout>
     <div className="px-4 425px:px-8 768px:px-12 text-center 768px:mx-auto 1024px:w-3/4 1200px:w-1/2 1400px:w-1/3">
     <AnimatePresence>
-      <motion.div variants={variants}
-            key="bg"
-            initial="initial"
-            animate="enter"
-            exit="exit"
-            className="absolute bg-cover top-0 left-0 right-0 bottom-0"
-            style={{
-              backgroundImage: "url("+ bg +")",
-              backgroundPosition: "top center",
-              zIndex: -2
-            }}
-          />
+    <motion.div key="bg" variants={variants}
+          initial="initial"
+          animate="enter"
+          exit="exit"
+          className="absolute bg-cover top-0 left-0 right-0 bottom-0"
+          style={{
+            zIndex: -2
+          }}
+        >
+            <video
+              autoPlay={true}
+              loop={true}
+              muted={true}
+              className="object-cover object-center h-full w-full"
+            >
+              <source
+                src={callme}
+                type="video/mp4"
+              />
+          </video>
+        </motion.div>
         
         <motion.div variants={container} key="content">
           <div className="min-h-screen flex w-full flex-col justify-center pt-12 pb-4 768px:pt-24">
