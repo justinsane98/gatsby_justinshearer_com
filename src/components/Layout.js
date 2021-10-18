@@ -71,7 +71,7 @@ const Layout = ({ children, location }) => {
                </motion.div>
               <motion.div variants={variants} className="h-0">
                 <button
-                    
+                    aria-label="Open Menu"
                     onClick={() => setMenuOpen(!menuOpen) }
                   >
                   <Hamburger menuopen={menuOpen ? 1 : 0} setMenuOpen={setMenuOpen} />
