@@ -103,7 +103,7 @@ const Contact = () => (
                   >
                   Or Call Me Maybe?
                   </div>
-                  <a href="tel:+18036659539" className="font-display text-white text-xs 425px:text-base 768px:text-lg font-thin uppercase bg-pink py-2 px-4 inline-block shadow-default border-pink border-2 text-white focus:bg-pink-dark active:bg-pink-light hover:bg-pink-light hover:text-white hover:cursor-pointer">{props.phone}</a>
+                  <a href="tel:+18036659539" className="font-display text-white text-xs 425px:text-base 768px:text-lg font-thin uppercase bg-pink py-2 px-4 inline-block shadow-default border-pink border-2 text-white focus:bg-pink-dark active:bg-pink-light hover:bg-pink-light hover:text-white hover:cursor-pointer scale-100 hover:scale-110 transition-bg transition-scale duration-200 ease-in-out">{props.phone}</a>
                 </motion.div>
               </div>
           </div>

@@ -16,7 +16,7 @@ return (
     <AnimatePresence>
         <li 
           style={{ textShadow: "2px 2px 0 rgba(0,0,0,0.2)" }}
-          className={"menu-item text-white-90 text-lg 425px:text-xl font-serif leading-tight sm:leading-loose z-10 mb-4 hover:text-white hover:pl-1 " + (path === to ? "font-bold" : "font-normal") + " " + className }
+          className={"menu-item text-white text-lg 425px:text-xl font-serif leading-tight sm:leading-loose z-10 mb-4 hover:text-white hover:pl-1 transition-pl transition-text transition-scale duration-200 ease-in-out" + (path === to ? " font-bold" : " font-normal") + " " + className }
         >
           <TransitionLink to={to} enter={{ length: duration }} exit={{ length: duration }} className="">
             {children}

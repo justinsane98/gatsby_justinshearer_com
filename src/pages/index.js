@@ -121,7 +121,7 @@ const Index = () => (
             }
                         
             <motion.li key="cta" variants={item} className="pt-4">
-              <TransitionLink to="/about" enter={{ length: duration }}  exit={{ length: duration }} className="font-display text-white shadow text-base 768px:text-lg 1024px:text-xl font-thin uppercase bg-pink py-2 px-4 inline-block shadow-default border-pink border-2 text-white focus:bg-pink-dark active:bg-pink-light hover:bg-pink-light hover:text-white hover:cursor-pointer">{props.cta}</TransitionLink>
+              <TransitionLink to="/about" enter={{ length: duration }}  exit={{ length: duration }} className="font-display text-white shadow text-base 768px:text-lg 1024px:text-xl font-thin uppercase bg-pink py-2 px-4 inline-block shadow-default border-pink border-2 text-white focus:bg-pink-dark active:bg-pink-light hover:bg-pink-light hover:text-white hover:cursor-pointer scale-100 hover:scale-110 transition-bg transition-scale duration-200 ease-in-out">{props.cta}</TransitionLink>
             </motion.li>
           </motion.ul>
         </motion.div>

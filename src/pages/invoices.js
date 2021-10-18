@@ -69,7 +69,7 @@ const Invoices = () => (
                 </p>
               </motion.div>
               <motion.div key="hero-cta" variants={item}>
-                <TransitionLink to="/contact" enter={{ length: duration }}  exit={{ length: duration }} className="font-display text-white shadow text-base 768px:text-lg 1024px text-xl font-thin uppercase bg-indigo-dark py-2 px-4 inline-block shadow-default border-indigo border-2 text-white focus:bg-indigo-light active:bg-indigo-light hover:bg-indigo hover:text-white hover:cursor-pointer mb-4">Circle Back</TransitionLink>
+                <TransitionLink to="/contact" enter={{ length: duration }}  exit={{ length: duration }} className="font-display text-white shadow text-base 768px:text-lg 1024px text-xl font-thin uppercase bg-indigo-dark py-2 px-4 inline-block shadow-default border-indigo border-2 text-white focus:bg-indigo-light active:bg-indigo-light hover:bg-indigo hover:text-white hover:cursor-pointer mb-4  scale-100 hover:scale-110 transition-bg transition-scale duration-200 ease-in-out">Circle Back</TransitionLink>
               </motion.div>
             </div>
             <motion.div variants={fromLeft} key="hero-image" className="relative lg:max-w-lg lg:w-full md:w-1/2 w-5/6 1024px:pt-12">
@@ -315,7 +315,7 @@ const Invoices = () => (
     <div className="md:w-1/2 md:pr-12 md:py-8 md:border-r md:border-b-0 mb-10 md:mb-0 pb-10 border-b border-black-25">
       <h1 className="sm:text-3xl text-2xl font-bold mb-2 text-gray-900">What I learned</h1>
       <p className="leading-relaxed text-base opacity-75">Dates and taxes have more edge cases than a corner factory. Invoices and receipts are suprisingly similar but it's all in the timing. Slow and steady might win the race but it does not get you paid.</p>
-      <TransitionLink to="/contact" enter={{ length: duration }}  exit={{ length: duration }} className="mt-4 font-display text-white shadow text-base 768px:text-lg 1024px text-xl font-thin uppercase bg-indigo-dark py-2 px-4 inline-block shadow-default border-indigo border-2 text-white focus:bg-indigo active:bg-indigo-light hover:bg-indigo hover:text-white hover:cursor-pointer mb-4">Grow With Me</TransitionLink>
+      <TransitionLink to="/contact" enter={{ length: duration }}  exit={{ length: duration }} className="mt-4 font-display text-white shadow text-base 768px:text-lg 1024px text-xl font-thin uppercase bg-indigo-dark py-2 px-4 inline-block shadow-default border-indigo border-2 text-white focus:bg-indigo active:bg-indigo-light hover:bg-indigo hover:text-white hover:cursor-pointer mb-4  scale-100 hover:scale-110 transition-bg transition-scale duration-200 ease-in-out">Grow With Me</TransitionLink>
               
     </div>
     <div className="flex flex-col md:w-1/2 md:pl-12">

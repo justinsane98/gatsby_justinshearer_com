@@ -25,14 +25,14 @@ const Menu = ({menuOpen}) => {
       <ul key="menulist" className="w-full 375px:ml-4 768px:ml-8 uppercase ">
         <li
           style={{ textShadow: "2px 2px 0 rgba(0,0,0,0.2)" }}
-          className="menu-item text-white text-5xl 425px:text-6xl 768px:text-7xl font-normal font-display w-10 leading-none z-10 mb-2"
+          className="menu-item text-white text-5xl 425px:text-6xl 768px:text-7xl font-normal font-display w-10 leading-none z-10 mb-4"
         >
           Case Studies
         </li>
-        <MenuItem to="/scotty/" className="opacity-90">Scotty Cameron</MenuItem>
-        <MenuItem to="/invoices/" className="opacity-90">Square Invoices</MenuItem>
-        <MenuItem to="/fire/" className="opacity-90">California Fire</MenuItem>
-        <MenuItem to="/brand/" className="opacity-90 mb-12">Square Brand</MenuItem>
+        <MenuItem to="/scotty/" className="opacity-75 hover:opacity-100">Scotty Cameron</MenuItem>
+        <MenuItem to="/invoices/" className="opacity-75 hover:opacity-100">Square Invoices</MenuItem>
+        <MenuItem to="/fire/" className="opacity-75 hover:opacity-100">California Fire</MenuItem>
+        <MenuItem to="/brand/" className="opacity-75 hover:opacity-100 mb-12">Square Brand</MenuItem>
         <MenuItem to="/contact/">Contact</MenuItem>
         <MenuItem to="/about/">About</MenuItem>
         <MenuItem to="/">Home</MenuItem>

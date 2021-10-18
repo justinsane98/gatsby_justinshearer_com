@@ -57,7 +57,7 @@ const MailchimpForm = ({ status, message, onValidated }) => {
             <input ref={node => (email = node)} className="font-serif text-xs 425px:text-base 768px:text-lg  p-2 w-full shadow-default border-pink-dark border-2 focus:outline-none focus:border-pink bg-white-75 focus:bg-white" placeholder="What's your Email?"></input>
         </motion.div>
         <motion.div key={"send"} variants={item}>
-            <button onClick={submit} className="font-display text-white text-xs 425px:text-base 768px:text-lg font-thin uppercase bg-pink py-2 px-4 mt-2 inline-block shadow-default border-pink border-2 text-white focus:bg-pink-dark active:bg-pink-light hover:bg-pink-light hover:text-white hover:cursor-pointer">{props.cta}</button>
+            <button onClick={submit} className="font-display text-white text-xs 425px:text-base 768px:text-lg font-thin uppercase bg-pink py-2 px-4 mt-2 inline-block shadow-default border-pink border-2 text-white focus:bg-pink-dark active:bg-pink-light hover:bg-pink-light hover:text-white hover:cursor-pointer scale-100 hover:scale-110 transition-bg transition-scale duration-200 ease-in-out">{props.cta}</button>
         </motion.div>
 
       </div>
