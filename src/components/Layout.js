@@ -5,6 +5,8 @@ import Hamburger from "./Hamburger"
 import { motion, AnimatePresence } from 'framer-motion'
 import logo from "/public/icon.svg"
 import { TransitionLink } from "gatsby-plugin-transition-link/components/TransitionLink"
+import "@fontsource/abril-fatface";
+import "@fontsource/playfair-display";
 
 const duration = 0.5
 
@@ -53,12 +55,6 @@ const Layout = ({ children, location }) => {
             <div className="w-full relative">
 
               <SEO />
-              <link rel="preconnect" href="https://fonts.googleapis.com" />
-              <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="1" />
-              <link
-                href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Playfair+Display&display=swap"
-                rel="stylesheet"
-              />
               <div
                 className="absolute top-0 left-0 right-0 bottom-0"
                 style={{
