@@ -33,7 +33,7 @@ const data = {
     "image": "images/scene1.gif",
     "cta": "Send a Note",
     "url": "/",
-    "phone": "(803)665-9530"
+    "phone": "(803)665-9539"
 }
 ]
 }

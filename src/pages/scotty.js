@@ -65,7 +65,7 @@ const Scotty = () => (
               <motion.div variants={item} key="hero-p">
                 <p style={{textShadow: "rgba(0, 0, 0, 0.05) 2px 2px"}} 
                   className="text-white-50 text-base font-normal 768px:text-lg font-serif leading-8 z-10 mb-8 pr-4 max-w-md">
-                  As a UX designer and full-stack developer, I metamorphosized a rigid legacy design into a flexible library of responsive modular components.  
+                  As a UI/UX designer and full-stack developer, I metamorphosized a rigid legacy design into a flexible library of responsive modular components.  
                 </p>
               </motion.div>
               <motion.div key="hero-cta" variants={item}>
@@ -97,7 +97,7 @@ const Scotty = () => (
               <h2
               style={{ textShadow: "2px 2px 0 rgba(0,0,0,0.05)" }}
                 className={"heading text-5xl 425px:text-6xl 768px:text-7xl my-2 768px:mt-0 768px:mb-0 inline-block font-thin font-display text-white leading-tight drop-shadow leading-tight"}>
-                Another One <br/> Bites The Dust <br/> <span className="opacity-50 text-3xl relative -top-4">- Queen</span></h2>
+                Editors were constantly<br/> lost in the rough <br/> <span className="opacity-50 text-3xl relative -top-4">The Problem</span></h2>
             </motion.div>
            
             
