@@ -12,19 +12,20 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
+    "deploy": "gatsby clean && gatsby build --prefix-paths && gh-pages -d public -r https://github.com/justinsane98/gatsby_justinshearer_com.git"
   },
   "dependencies": {
     "@fontsource/abril-fatface": "^4.5.0",
     "@fontsource/playfair-display": "^4.5.0",
+    "firebase": "^10.3.1",
     "framer-motion": "^2.6.13",
     "gatsby": "^4.25.7",
-    "gatsby-plugin-image": "^2.25.0",
-    "gatsby-plugin-sharp": "^4.25.1",
     "gatsby-plugin-google-gtag": "^4.25.0",
+    "gatsby-plugin-image": "^2.25.0",
     "gatsby-plugin-manifest": "^4.25.0",
     "gatsby-plugin-postcss": "^5.25.0",
     "gatsby-plugin-react-helmet": "^5.25.0",
+    "gatsby-plugin-sharp": "^4.25.1",
     "gatsby-plugin-transition-link": "^1.20.5",
     "node-fetch": "^3.3.2",
     "postcss": "^8.4.29",
@@ -35,7 +36,7 @@
     "react-mailchimp-subscribe": "^2.1.3"
   },
   "devDependencies": {
-    "gh-pages": "^6.0.0",
+    "gh-pages": "^3.2.3",
     "prettier": "^3.0.3",
     "tailwindcss": "^3.3.3"
   }
