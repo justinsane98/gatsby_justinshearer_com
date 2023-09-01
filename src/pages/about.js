@@ -3,7 +3,7 @@ import Layout from "../components/Layout"
 import Highlight from "../components/Highlight";
 import Heading from "../components/Heading";
 import { motion, AnimatePresence } from 'framer-motion'
-import dance from "/public/images/dance.mp4"
+import dance from "../videos/dance.mp4"
 import TransitionLink from "gatsby-plugin-transition-link";
 
 const duration = 0.5

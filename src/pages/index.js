@@ -5,7 +5,7 @@ import Lyric from "../components/Lyric";
 import Title from "../components/Title";
 import { motion, AnimatePresence } from 'framer-motion'
 import TransitionLink from "gatsby-plugin-transition-link";
-import bg from "/public/images/rick.mp4"
+import bg from "../videos/rick.mp4"
 
 const props = data.properties[0];
 

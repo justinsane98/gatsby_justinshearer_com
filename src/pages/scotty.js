@@ -2,11 +2,11 @@ import React from "react"
 import Layout from "../components/Layout"
 import TransitionLink from "gatsby-plugin-transition-link";
 import { motion, AnimatePresence } from 'framer-motion'
-import hand from "/public/images/hand-scotty.png"
-import problem from "/public/images/missing.mp4"
-import solution from "/public/images/scotty.mp4"
-import logo from "/public/images/logo-scotty.png"
-import watches from "/public/images/watches-scotty.png"
+import problem from "../videos/missing.mp4"
+import solution from "../videos/scotty.mp4"
+import hand from "../images/hand-scotty.png"
+import watch from "../images/watches-scotty.png"
+import logo from "../images/logo-scotty.png"
 
 const duration = 0.5
 
@@ -59,7 +59,7 @@ const Scotty = () => (
       <motion.section  variants={container} key="hero" className="text-white font-serif relative bg-gradient-to-br from-black-light to-black">
           <div className="px-4 425px:px-8 768px:px-12 1024px:mx-auto 1200px:max-w-7xl flex md:flex-row flex-col items-center">
             <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center pt-32 768px:pt-0">
-              <motion.h1 style={{ textShadow: "2px 2px 0 rgba(0,0,0,0.05)" }} key="hero-heading" variants={item} className="font-display text-9xl mb-4 375px:text-10xl 1024px:text-12xl text-white leading-none bg-clip-text text-transparent bg-gradient-to-bl from-yellow-light to-yellow">Scotty
+              <motion.h1 style={{ textShadow: "2px 2px 0 rgba(0,0,0,0.05)" }} key="hero-heading" variants={item} className="font-display text-9xl mb-4 375px:text-10xl 1024px:text-12xl leading-none bg-clip-text text-transparent bg-gradient-to-bl from-yellow-light to-yellow">Scotty
                 <br/> <span className="text-white text-6xl 375px:text-7xl 1024px:text-8xl  1024px:-mt-2 block">Cameron</span>
               </motion.h1>
               <motion.div variants={item} key="hero-p">
@@ -69,7 +69,7 @@ const Scotty = () => (
                 </p>
               </motion.div>
               <motion.div key="hero-cta" variants={item}>
-                <TransitionLink to="/contact" enter={{ length: duration }}  exit={{ length: duration }} className="font-display text-white shadow text-base 768px:text-lg 1024px text-xl font-thin uppercase bg-yellow py-2 px-4 inline-block shadow-default border-yellow border-2 text-black focus:bg-yellow-dark active:bg-yellow-light hover:bg-yellow-light hover:cursor-pointer mb-4  scale-100 hover:scale-110 transition-bg transition-scale duration-200 ease-in-out">Play Through</TransitionLink>
+                <TransitionLink to="/contact" enter={{ length: duration }}  exit={{ length: duration }} className="font-display shadow text-base 768px:text-lg 1024px text-xl font-thin uppercase bg-yellow py-2 px-4 inline-block shadow-default border-yellow border-2 text-black focus:bg-yellow-dark active:bg-yellow-light hover:bg-yellow-light hover:cursor-pointer mb-4  scale-100 hover:scale-110 transition-bg transition-scale duration-200 ease-in-out">Play Through</TransitionLink>
               </motion.div>
             </div>
             <motion.div variants={fromLeft} key="hero-image" className="relative lg:max-w-lg lg:w-full md:w-1/2 w-5/6 1024px:pt-12">
@@ -97,7 +97,7 @@ const Scotty = () => (
               <h2
               style={{ textShadow: "2px 2px 0 rgba(0,0,0,0.05)" }}
                 className={"heading text-5xl 425px:text-6xl 768px:text-7xl my-2 768px:mt-0 768px:mb-0 inline-block font-thin font-display text-white leading-tight drop-shadow leading-tight"}>
-                Editors were constantly<br/> lost in the rough <br/> <span className="opacity-50 text-3xl relative -top-4">The Problem</span></h2>
+                I Still Haven't Found<br/> What I'm Looking For <br/> <span className="opacity-50 text-3xl relative -top-4">- U2</span></h2>
             </motion.div>
            
             
@@ -154,7 +154,7 @@ const Scotty = () => (
        
       </div>
       <div className="1024px:w-2/3 1024px:mt-0 mt-12 flex">
-        <img src={watches} alt="step" className="object-center object-contain"/>
+        <img src={watch} alt="step" className="object-center object-contain"/>
       </div>   
     </div>
   </div>
@@ -259,7 +259,7 @@ const Scotty = () => (
     <div className="md:w-1/2 md:pr-12 md:py-8 md:border-r md:border-b-0 mb-10 md:mb-0 pb-10 border-b border-white-10">
       <h1 className="sm:text-3xl text-2xl font-bold mb-2">What I learned</h1>
       <p className="leading-relaxed text-base text-white-50">From high-end putters to the simplest web components, form should never eclipse function. Always take the time to craft something you can be proud of for at least iterations if not generations.</p>
-      <TransitionLink to="/contact" enter={{ length: duration }}  exit={{ length: duration }} className="mt-4 font-display text-white shadow text-base 768px:text-lg 1024px text-xl font-thin uppercase bg-yellow py-2 px-4 inline-block shadow-default border-yellow-dark border-2 text-black focus:bg-yellow-dark active:bg-yellow-light hover:bg-yellow-light hover:text-black hover:cursor-pointer mb-4  scale-100 hover:scale-110 transition-bg transition-scale duration-200 ease-in-out">Grow With Me</TransitionLink>
+      <TransitionLink to="/contact" enter={{ length: duration }}  exit={{ length: duration }} className="mt-4 font-display shadow text-base 768px:text-lg 1024px text-xl font-thin uppercase bg-yellow py-2 px-4 inline-block shadow-default border-yellow-dark border-2 text-black focus:bg-yellow-dark active:bg-yellow-light hover:bg-yellow-light hover:text-black hover:cursor-pointer mb-4  scale-100 hover:scale-110 transition-bg transition-scale duration-200 ease-in-out">Grow With Me</TransitionLink>
               
     </div>
     <div className="flex flex-col md:w-1/2 md:pl-12">

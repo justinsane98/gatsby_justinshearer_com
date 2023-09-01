@@ -23,7 +23,7 @@ return (
   <nav className={"navigation z-50 top-4 right-4 375px:top-8 375px:right-8 768px:top-10 fixed scale-100 hover:scale-110 transition-bg transition-scale duration-200 ease-in-out"}>
       <div className={`w-12 768px:mr-10 768px:mt-1 hover:cursor-pointer border-transparent border-2 p-2 ${themeClasses}`}>
         <div className={"bg-white h-1 mb-2 shadow relative " + (menuopen ? "rotate-45 top-3" : "")}></div>
-        <div className={"bg-white h-1 mb-2 " + (menuopen ? "bg-transparent" : "shadow")}></div>
+        <div className={"h-1 mb-2 " + (menuopen ? "bg-transparent" : "bg-white shadow")}></div>
         <div className={"bg-white h-1 mb-0 shadow relative " + (menuopen ? "-rotate-45 -top-3" : "")}></div>
       </div>
   </nav>

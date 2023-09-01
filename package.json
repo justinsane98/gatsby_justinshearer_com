@@ -1,6 +1,6 @@
 {
   "name": "justinshearer_com",
-  "version": "1.0.1",
+  "version": "1.5.0",
   "main": "index.js",
   "repository": "git@github.com:justinsane98/gatsby-justinshearer-com.git",
   "author": "Justin Shearer <https://justinshearer.com",
@@ -18,24 +18,25 @@
     "@fontsource/abril-fatface": "^4.5.0",
     "@fontsource/playfair-display": "^4.5.0",
     "framer-motion": "^2.6.13",
-    "gatsby": "^2.32.13",
-    "gatsby-image": "^3.10.0",
-    "gatsby-plugin-google-gtag": "^2.2",
-    "gatsby-plugin-manifest": "^2.4.1",
-    "gatsby-plugin-postcss": "^3.0.0",
-    "gatsby-plugin-react-helmet": "^3.3.0",
+    "gatsby": "^4.25.7",
+    "gatsby-plugin-image": "^2.25.0",
+    "gatsby-plugin-sharp": "^4.25.1",
+    "gatsby-plugin-google-gtag": "^4.25.0",
+    "gatsby-plugin-manifest": "^4.25.0",
+    "gatsby-plugin-postcss": "^5.25.0",
+    "gatsby-plugin-react-helmet": "^5.25.0",
     "gatsby-plugin-transition-link": "^1.20.5",
-    "node-fetch": "^2.6.1",
-    "postcss": "^8.3.6",
-    "prop-types": "^15.7.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-helmet": "^6.0.0",
+    "node-fetch": "^3.3.2",
+    "postcss": "^8.4.29",
+    "prop-types": "^15.8.1",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5",
+    "react-helmet": "^6.1.0",
     "react-mailchimp-subscribe": "^2.1.3"
   },
   "devDependencies": {
-    "gh-pages": "^3.2.3",
-    "prettier": "^2.0.5",
-    "tailwindcss": "^2.2.4"
+    "gh-pages": "^6.0.0",
+    "prettier": "^3.0.3",
+    "tailwindcss": "^3.3.3"
   }
 }

@@ -1,12 +1,12 @@
 import React, { useState } from "react"
-import SEO from "./SEO"
+import Seo from "./SEO"
 import Menu from "./Menu"
 import Hamburger from "./Hamburger"
 import { motion, AnimatePresence } from 'framer-motion'
-import logo from "/public/icon.svg"
 import { TransitionLink } from "gatsby-plugin-transition-link/components/TransitionLink"
 import "@fontsource/abril-fatface";
 import "@fontsource/playfair-display";
+import { StaticImage } from "gatsby-plugin-image"
 
 const duration = 0.5
 
@@ -54,7 +54,7 @@ const Layout = ({ children, location }) => {
           <div className="flex min-h-screen">
             <div className="w-full relative">
 
-              <SEO />
+              <Seo />
               <div
                 className="absolute top-0 left-0 right-0 bottom-0"
                 style={{
@@ -66,7 +66,7 @@ const Layout = ({ children, location }) => {
                <motion.div variants={variants} className="h-0 absolute z-30 w-12 top-4 left-4 425px:left-8 375px:top-8 768px:left-16 768px:top-11">
                
                <TransitionLink to="/" enter={{ length: duration }} exit={{ length: duration }}>
-                 <img className="opacity-75 hover:opacity-100 hover:cursor-pointer  scale-100 hover:scale-110 transition-bg transition-scale duration-200 ease-in-out" src={logo} alt="Justin Shearer" />
+                 <StaticImage className="opacity-75 hover:opacity-100 hover:cursor-pointer  scale-100 hover:scale-110 transition-bg transition-scale duration-200 ease-in-out" src="../images/icon.svg" alt="Justin Shearer" />
                </TransitionLink>
                </motion.div>
               <motion.div variants={variants} className="h-0">

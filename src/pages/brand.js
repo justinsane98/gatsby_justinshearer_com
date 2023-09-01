@@ -2,12 +2,11 @@ import React from "react"
 import Layout from "../components/Layout"
 import TransitionLink from "gatsby-plugin-transition-link";
 import { motion, AnimatePresence } from 'framer-motion'
-import hand from "/public/images/hand-square-brand.png"
-import problem from "/public/images/chaos.mp4"
-import solution from "/public/images/stats-square-brand.jpg"
-import logo from "/public/images/logo-square-brand.png"
-import watches from "/public/images/watches.png"
-
+import problem from "../videos/chaos.mp4"
+import solution from "../images/stats-square-brand.jpg"
+import hand from "../images/hand-square-brand.png"
+import logo from "../images/logo-square-brand.png"
+import watches from "../images/watches.png"
 const duration = 0.5
 
 const container = {

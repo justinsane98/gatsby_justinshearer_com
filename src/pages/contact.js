@@ -3,7 +3,7 @@ import Layout from "../components/Layout"
 import data from '../data/data'
 import Heading from "../components/Heading"
 import { motion, AnimatePresence } from 'framer-motion'
-import callme from "/public/images/callme.mp4"
+import callme from "../videos/callme.mp4"
 import Form from "../components/Form"
 
 const props = data.properties[1];

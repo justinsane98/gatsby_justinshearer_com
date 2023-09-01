@@ -10,6 +10,8 @@ module.exports = {
     description: "I am a creative UI/UX designer, seasoned full-stack web-developer and a data driven generalist who is always looking for an interesting problem to solve. I've worked with agile startups like Square, established consumer brands like Scotty Cameron and large government entities like the State of California.",
   },
   plugins: [
+       "gatsby-plugin-image",
+       "gatsby-plugin-sharp",
        "gatsby-plugin-react-helmet",
     {
       resolve: "gatsby-plugin-manifest",
