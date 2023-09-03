@@ -5,13 +5,13 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAziM8Dkq3BwvskKCnEI-OGU7z4SKYwLAo",
-  authDomain: "justinshearerdotcom.firebaseapp.com",
-  projectId: "justinshearerdotcom",
-  storageBucket: "justinshearerdotcom.appspot.com",
-  messagingSenderId: "897571319748",
-  appId: "1:897571319748:web:6466e6e32fb2423650fe91",
-  measurementId: "G-QD6CG8C72D"
+  apiKey: process.env.firebase_apiKey,
+  authDomain: process.env.firebase_authDomain,
+  projectId: process.env.firebase_projectId,
+  storageBucket: process.env.firebase_storageBucket,
+  messagingSenderId: process.env.firebase_messagingSenderId,
+  appId: process.env.firebase_appId,
+  measurementId: process.env.firebase_measurementId
 };
 
 const app = initializeApp(firebaseConfig);
@@ -89,7 +89,7 @@ class Form extends Component {
               <input onChange={e => this.updateEmail(e.target.value)} className="font-serif text-xs 425px:text-base 768px:text-lg  p-2 w-full shadow-default border-pink-dark border-2 focus:outline-none focus:border-pink bg-white-75 focus:bg-white" placeholder="What's your Email?"></input>
           </motion.div>
           <motion.div key={"send"} variants={item}>
-              <button onClick={this.saveData} className="font-display text-white text-xs 425px:text-base 768px:text-lg font-thin uppercase bg-pink py-2 px-4 mt-2 inline-block shadow-default border-pink border-2 text-white focus:bg-pink-dark active:bg-pink-light hover:bg-pink-light hover:text-white hover:cursor-pointer scale-100 hover:scale-110 transition-bg transition-scale duration-200 ease-in-out">{props.cta}</button>
+              <button disabled={this.state.status === "loading" || this.state.status === "success" ? "disabled" : ""} onClick={this.saveData} className="font-display text-white text-xs 425px:text-base 768px:text-lg font-thin uppercase bg-pink py-2 px-4 mt-2 inline-block shadow-default border-pink border-2 text-white focus:bg-pink-dark active:bg-pink-light hover:bg-pink-light hover:text-white hover:cursor-pointer scale-100 hover:scale-110 transition-bg transition-scale duration-200 ease-in-out">{props.cta}</button>
           </motion.div>
 
         </div>

@@ -72,3 +72,7 @@ yarn-error.log
 .vscode/
 # Local Netlify folder
 .netlify
+
+#functions config
+/functions/config.js
+.env.production
