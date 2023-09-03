@@ -13,8 +13,3 @@
 4. [tool used to pixelate gif](https://onlinegiftools.com/pixelate-gif)
 5. [tool used to optimize gif](https://ezgif.com/optimize/)
 
-## TODOs
-1. Add Square Case Study
-2. Add Scotty Cameron Case Study
-3. Add CalFire Case Study
-4. Add Resume
