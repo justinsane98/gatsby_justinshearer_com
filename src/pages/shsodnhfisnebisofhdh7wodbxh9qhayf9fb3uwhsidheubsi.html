@@ -1,0 +1,1031 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DEEZ NATION: Jeopardy Prototype</title>
+  <style>
+    :root{
+      --bg:#0b1020;
+      --panel:#121a33;
+      --panel2:#0f1730;
+      --ink:#e9eefc;
+      --muted:#a9b5dd;
+      --accent:#7dd3fc;
+      --warn:#fb7185;
+      --ok:#86efac;
+      --gold:#fbbf24;
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+      --tileRadius: 14px;
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 700px at 20% 10%, #1a2a67 0%, var(--bg) 55%, #050817 100%);
+      color:var(--ink);
+    }
+    header{
+      padding:18px 18px 10px;
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .titleWrap{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+    h1{
+      margin:0;
+      font-size:18px;
+      letter-spacing:.6px;
+      text-transform:uppercase;
+    }
+    .subtitle{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .controls{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-end;
+    }
+    button, .chip, input[type="text"], input[type="number"]{
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: var(--ink);
+      padding: 10px 12px;
+      font-weight:600;
+      cursor:pointer;
+      transition: transform .06s ease, background .15s ease, border-color .15s ease;
+      outline:none;
+    }
+    button:hover{ background: rgba(255,255,255,.10); }
+    button:active{ transform: translateY(1px); }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      cursor:default;
+      user-select:none;
+    }
+    .toggle{
+      cursor:pointer;
+    }
+    .toggle[data-on="true"]{
+      border-color: rgba(125,211,252,.55);
+      background: rgba(125,211,252,.12);
+    }
+    .layout{
+      display:grid;
+      grid-template-columns: 340px 1fr;
+      gap:16px;
+      padding: 0 18px 18px;
+    }
+    @media (max-width: 980px){
+      .layout{ grid-template-columns: 1fr; }
+    }
+    .panel{
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .sidebar{
+      padding:14px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .sectionTitle{
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.5px;
+      color:var(--muted);
+      margin:8px 0 6px;
+    }
+    .teams{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .team{
+      display:grid;
+      grid-template-columns: 1fr auto;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius: 14px;
+      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .team input[type="text"]{
+      width:100%;
+      padding:8px 10px;
+      border-radius:12px;
+      cursor:text;
+    }
+    .score{
+      font-variant-numeric: tabular-nums;
+      font-size:16px;
+      font-weight:800;
+      padding:8px 12px;
+      border-radius:12px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.10);
+      min-width:84px;
+      text-align:right;
+    }
+    .scoreControls{
+      display:flex;
+      gap:8px;
+      margin-top:6px;
+      flex-wrap:wrap;
+    }
+    .scoreControls button{
+      padding:8px 10px;
+      font-size:12px;
+    }
+    .hint{
+      color: var(--muted);
+      font-size:13px;
+      line-height:1.35;
+    }
+    .board{
+      padding:14px;
+      overflow:auto;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(4, minmax(160px, 1fr));
+      gap:10px;
+      min-width: 700px;
+    }
+    .cat{
+      padding:10px 10px 8px;
+      border-radius: var(--tileRadius);
+      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(255,255,255,.08);
+      text-transform:uppercase;
+      letter-spacing:.6px;
+      font-weight:900;
+      font-size:12px;
+      color: var(--accent);
+      text-align:center;
+    }
+    .tile{
+      padding:14px 12px;
+      border-radius: var(--tileRadius);
+      background: linear-gradient(180deg, rgba(251,191,36,.16), rgba(251,191,36,.06));
+      border: 1px solid rgba(251,191,36,.30);
+      box-shadow: 0 10px 20px rgba(0,0,0,.22);
+      font-size:18px;
+      font-weight:900;
+      text-align:center;
+      user-select:none;
+      cursor:pointer;
+      transition: transform .07s ease, filter .15s ease, opacity .15s ease;
+      font-variant-numeric: tabular-nums;
+    }
+    .tile:hover{ filter: brightness(1.08); }
+    .tile:active{ transform: translateY(1px); }
+    .tile.used{
+      opacity:.35;
+      cursor:not-allowed;
+      filter: grayscale(1);
+    }
+    .footerActions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+
+    /* Modal */
+    .modalBackdrop{
+      position:fixed;
+      inset:0;
+      background: rgba(0,0,0,.65);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:16px;
+      z-index:50;
+    }
+    .modalBackdrop.show{ display:flex; }
+    .modal{
+      width:min(860px, 100%);
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .modalHeader{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      padding:14px 16px 10px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.20);
+    }
+    .modalHeader h2{
+      margin:0;
+      font-size:14px;
+      text-transform:uppercase;
+      letter-spacing:.7px;
+      color: var(--accent);
+    }
+    .meta{
+      color: var(--muted);
+      font-size:12px;
+      margin-top:4px;
+    }
+    .modalBody{
+      padding:16px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:12px;
+    }
+    .card{
+      padding:14px;
+      border-radius: 18px;
+      background: rgba(0,0,0,.22);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .label{
+      color: var(--muted);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.6px;
+      margin-bottom:8px;
+    }
+    .bigText{
+      font-size:18px;
+      line-height:1.35;
+      font-weight:800;
+      white-space:pre-wrap;
+    }
+    .answer{
+      display:none;
+    }
+    .answer.show{
+      display:block;
+      border-left: 4px solid rgba(134,239,172,.55);
+    }
+    .answer .bigText{ font-weight:800; }
+    .modalActions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      padding: 12px 16px 16px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.16);
+      align-items:center;
+      justify-content:space-between;
+    }
+    .leftActions, .rightActions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .primary{
+      border-color: rgba(125,211,252,.60);
+      background: rgba(125,211,252,.16);
+    }
+    .danger{
+      border-color: rgba(251,113,133,.55);
+      background: rgba(251,113,133,.12);
+    }
+    .ok{
+      border-color: rgba(134,239,172,.55);
+      background: rgba(134,239,172,.12);
+    }
+    .teamPick button{
+      padding:9px 10px;
+      font-size:12px;
+    }
+    .small{
+      font-size:12px;
+      color: var(--muted);
+    }
+    .wagerRow{
+      display:grid;
+      grid-template-columns: 1fr 140px;
+      gap:10px;
+      align-items:center;
+      margin-top:10px;
+    }
+    input[type="number"]{
+      width:140px;
+      cursor:text;
+      padding:10px 12px;
+      font-weight:800;
+      font-variant-numeric: tabular-nums;
+    }
+    .banner{
+      padding:10px 12px;
+      border-radius: 14px;
+      border: 1px dashed rgba(255,255,255,.20);
+      background: rgba(0,0,0,.18);
+      color: var(--muted);
+      font-size:12px;
+      line-height:1.35;
+    }
+    .karenBadge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border: 1px solid rgba(251,113,133,.45);
+      background: rgba(251,113,133,.10);
+      color: var(--ink);
+      font-weight:800;
+      font-size:12px;
+    }
+    .karenBadge strong{ color: var(--warn); }
+  </style>
+</head>
+<body>
+<header>
+  <div class="titleWrap">
+    <h1>DEEZ NATION: Jeopardy Prototype</h1>
+    <p class="subtitle">Click tiles → reveal clue → show answer → award points. (Scorched mode optional.)</p>
+  </div>
+  <div class="controls">
+    <span class="chip toggle" id="toggleKaren" data-on="true" title="Turn district/Karen satire on/off">🔥 Scorched Mode: <strong id="karenState">ON</strong></span>
+    <button id="resetBtn" class="danger" title="Resets board + scores">Reset Everything</button>
+    <button id="exportBtn" title="Downloads current state JSON">Export State</button>
+    <button id="importBtn" title="Paste state JSON">Import State</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="panel sidebar">
+    <div class="sectionTitle">Teams</div>
+    <div class="teams" id="teams"></div>
+
+    <div class="sectionTitle">Rules (fast)</div>
+    <div class="banner" id="rulesBanner">
+      ✅ Correct historical response earns points.<br/>
+      🥜 Then add: “deez nuts” / “your mom” / “that’s what she said.”<br/>
+      💸 Final Jeopardy uses wagers.<br/>
+      🔥 Scorched Mode adds district/Karen flavor text.
+    </div>
+
+    <div class="sectionTitle">Quick controls</div>
+    <div class="footerActions">
+      <button id="undoBtn" title="Undo last scoring action">Undo Score</button>
+      <button id="clearUsedBtn" title="Clears used tiles only">Clear Used Tiles</button>
+    </div>
+
+    <div class="hint">
+      Pro tip: if admin walks in, toggle scorched mode OFF and pretend it’s “SATIRE-BASED RECALL PEDAGOGY.”
+      Works 3% of the time, every time.
+    </div>
+  </aside>
+
+  <main class="panel board">
+    <div class="grid" id="boardGrid"></div>
+  </main>
+</div>
+
+<!-- Modal -->
+<div class="modalBackdrop" id="modalBackdrop" role="dialog" aria-modal="true">
+  <div class="modal">
+    <div class="modalHeader">
+      <div>
+        <h2 id="modalTitle">Clue</h2>
+        <div class="meta" id="modalMeta"></div>
+      </div>
+      <button id="closeModalBtn" title="Close">✕</button>
+    </div>
+
+    <div class="modalBody">
+      <div class="card">
+        <div class="label">Clue</div>
+        <div class="bigText" id="modalClue"></div>
+      </div>
+
+      <div class="card answer" id="answerCard">
+        <div class="label">Answer (What is / Who is)</div>
+        <div class="bigText" id="modalAnswer"></div>
+        <div class="small" id="modalFlavor"></div>
+      </div>
+
+      <div class="card" id="finalWagerCard" style="display:none;">
+        <div class="label">Final Jeopardy Wagers</div>
+        <div class="small">Enter each team’s wager (can be 0). Then mark correct/incorrect to apply.</div>
+        <div id="wagerFields"></div>
+      </div>
+
+      <div id="karenCardWrap" style="display:none;">
+        <div class="card">
+          <div class="label">Scorched Mode Interruption</div>
+          <div class="karenBadge">📎 <strong>Karen</strong> from Central Office says:</div>
+          <div class="bigText" id="karenText" style="margin-top:10px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modalActions">
+      <div class="leftActions">
+        <button id="showAnswerBtn" class="primary">Show Answer</button>
+        <button id="markUsedBtn" title="Locks the tile without scoring">Mark Used (No Score)</button>
+      </div>
+
+      <div class="rightActions">
+        <div class="teamPick" id="teamPick"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // -----------------------------
+  // Data
+  // -----------------------------
+  const categories = [
+    "Revolutionary Energy",
+    "Divided Nation",
+    "World Wars & Power",
+    "Rights & Modern Chaos"
+  ];
+
+  // 5 rows ($200-$1000). We'll treat the last tile in each category as $1000.
+  const values = [200, 400, 600, 800, 1000];
+
+  // Board: [categoryIndex][rowIndex]
+  // Each clue has: clue, answer, flavorClean, flavorScorched, karenOptional
+  const board = [
+    // 0 Revolutionary Energy
+    [
+      {
+        clue: "This 1773 protest involved colonists dumping tea into Boston Harbor.",
+        answer: "What is the Boston Tea Party?",
+        flavorClean: "Optional tag: “deez nuts” / “your mom” / “that’s what she said.”",
+        flavorScorched: "Add-on: “Also when Britain tried to tax deez leaves.”",
+        karen: "Please submit a Building & Grounds request before dumping any tea into district-approved harbors."
+      },
+      {
+        clue: "This 1776 document formally declared independence from Britain.",
+        answer: "What is the Declaration of Independence?",
+        flavorClean: "Keep it accurate; then riff.",
+        flavorScorched: "Add-on: “Also what your mom declared after dumping King George.”",
+        karen: "Independence is not an approved learning objective unless aligned to the district’s Vision Statement v14.2."
+      },
+      {
+        clue: "The colonists protested taxation using this phrase.",
+        answer: "What is “No taxation without representation”?",
+        flavorClean: "Then apply the joke tag.",
+        flavorScorched: "Add-on: “Represent deez nuts.”",
+        karen: "Representation is a sensitive topic. Please ensure all speech is pre-approved by the Communications Department."
+      },
+      {
+        clue: "This system prevents one branch of government from gaining too much power.",
+        answer: "What are checks and balances?",
+        flavorClean: "Correct first, chaos second.",
+        flavorScorched: "Add-on: “Also what the district forgot when Karen got admin login access.”",
+        karen: "Checks and balances have been replaced with “one shared spreadsheet owned by Karen.”"
+      },
+      {
+        clue: "Daily Double: The Founders feared this form of government ruled by one absolute leader.",
+        answer: "What is a dictatorship?",
+        flavorClean: "Wager time (or just run it normal).",
+        flavorScorched: "Add-on: “Because we didn’t fight Britain just to install Karen as Supreme Clipboard Commander.”",
+        karen: "We prefer the term “streamlined leadership with enhanced compliance.”"
+      }
+    ],
+    // 1 Divided Nation
+    [
+      {
+        clue: "This amendment abolished slavery.",
+        answer: "What is the 13th Amendment?",
+        flavorClean: "Then tag it.",
+        flavorScorched: "Add-on: “Unlike the copier, which still enslaves us.”",
+        karen: "Please refrain from comparing office equipment to historical injustice in writing (email is forever)."
+      },
+      {
+        clue: "He delivered the Gettysburg Address in 1863.",
+        answer: "Who is Abraham Lincoln?",
+        flavorClean: "Who is / What is — then jokes.",
+        flavorScorched: "Add-on: “Address? That’s where your mom sends complaint emails from.”",
+        karen: "All addresses must be entered into the Student Information System within 24 hours."
+      },
+      {
+        clue: "This war was fought between North and South from 1861–1865.",
+        answer: "What is the Civil War?",
+        flavorClean: "Then tag it.",
+        flavorScorched: "Add-on: “Also what happens in your mom’s group chat.”",
+        karen: "Please do not reference group chats; those are unofficial and therefore terrifying."
+      },
+      {
+        clue: "This period attempted to rebuild the South after the Civil War.",
+        answer: "What is Reconstruction?",
+        flavorClean: "Then tag it.",
+        flavorScorched: "Add-on: “Also what the district calls rebranding the same bad policy.”",
+        karen: "Rebranding is a core competency. Please stop noticing patterns."
+      },
+      {
+        clue: "This Supreme Court case upheld segregation under ‘separate but equal.’",
+        answer: "What is Plessy v. Ferguson?",
+        flavorClean: "Then tag it.",
+        flavorScorched: "Add-on: “Separate? That’s what she said.”",
+        karen: "‘Separate but equal’ is not allowed. Neither is humor. Choose wisely."
+      }
+    ],
+    // 2 World Wars & Power
+    [
+      {
+        clue: "This attack brought the U.S. into World War II in 1941.",
+        answer: "What is Pearl Harbor?",
+        flavorClean: "Then tag it.",
+        flavorScorched: "Add-on: “Also when your mom surprised the buffet.”",
+        karen: "Buffets are not permitted on campus due to an incident involving nacho cheese and the Chromebook cart."
+      },
+      {
+        clue: "This dictator ruled Nazi Germany during World War II.",
+        answer: "Who is Adolf Hitler?",
+        flavorClean: "Be serious on the fact; jokes only about power/authority (not victims).",
+        flavorScorched: "Add-on: “Historical lesson: unchecked power goes badly. Karen, take notes.”",
+        karen: "Central Office would like to clarify that they are NOT a dictatorship. Please stop comparing the copier policy to fascism."
+      },
+      {
+        clue: "This 1962 standoff nearly led to nuclear war.",
+        answer: "What is the Cuban Missile Crisis?",
+        flavorClean: "Then tag it.",
+        flavorScorched: "Add-on: “Also your mom waiting for popcorn.”",
+        karen: "Microwaves are only approved for staff use, except Karen."
+      },
+      {
+        clue: "The Cold War was primarily between the U.S. and this communist superpower.",
+        answer: "What is the Soviet Union?",
+        flavorClean: "Then tag it.",
+        flavorScorched: "Add-on: “Cold? That’s what she said.”",
+        karen: "The building temperature is set to 64°F for “budgetary mindfulness.” Complaints will be recycled."
+      },
+      {
+        clue: "Daily Double: This principle divides power among executive, legislative, and judicial branches.",
+        answer: "What is separation of powers?",
+        flavorClean: "Then tag it.",
+        flavorScorched: "Add-on: “Also separation from sanity when the district controls thermostat, curriculum, and stapler alignment.”",
+        karen: "Stapler alignment is a priority initiative. Please submit alignment data by 3:00 PM."
+      }
+    ],
+    // 3 Rights & Modern Chaos
+    [
+      {
+        clue: "This Supreme Court case ended legal segregation in public schools.",
+        answer: "What is Brown v. Board of Education?",
+        flavorClean: "Then tag it.",
+        flavorScorched: "Add-on: “Because equality > Karen’s dress code memo.”",
+        karen: "Dress code memos are legally binding in Karen’s mind, which is what matters."
+      },
+      {
+        clue: "This amendment gave women the right to vote.",
+        answer: "What is the 19th Amendment?",
+        flavorClean: "Then tag it.",
+        flavorScorched: "Add-on: “Which is why Karen has opinions.”",
+        karen: "Karen would like to speak to the Constitution’s manager."
+      },
+      {
+        clue: "This scandal forced President Nixon to resign in 1974.",
+        answer: "What is Watergate?",
+        flavorClean: "Then tag it.",
+        flavorScorched: "Add-on: “Also why email chains are dangerous.”",
+        karen: "CC’ing the Superintendent is encouraged. Transparency builds character. (Also fear.)"
+      },
+      {
+        clue: "This amendment protects freedom of speech.",
+        answer: "What is the First Amendment?",
+        flavorClean: "Then tag it.",
+        flavorScorched: "Add-on: “Which legally protects this lesson (mostly).”",
+        karen: "Freedom of speech does not include jokes Karen doesn’t like."
+      },
+      {
+        clue: "FINAL JEOPARDY: From the Revolution to WWII to Civil Rights, Americans repeatedly resisted this concentration of authority.",
+        answer: "What is tyranny?",
+        flavorClean: "Apply wagers; correct adds wager, incorrect subtracts.",
+        flavorScorched: "Add-on: “Or as the district calls it: ‘streamlined leadership.’”",
+        karen: "Tyranny is not present. Karen has replaced it with “leadership synergy.”"
+      }
+    ],
+  ];
+
+  const defaultTeams = [
+    { name: "Team 1", score: 0 },
+    { name: "Team 2", score: 0 },
+    { name: "Team 3", score: 0 },
+    { name: "Team 4", score: 0 },
+  ];
+
+  // State
+  let state = {
+    scorched: true,
+    teams: structuredClone(defaultTeams),
+    used: Array.from({length: categories.length}, () => Array(values.length).fill(false)),
+    history: [], // for undo: {teamIndex, delta}
+    finalWagers: [0,0,0,0]
+  };
+
+  // -----------------------------
+  // DOM
+  // -----------------------------
+  const elTeams = document.getElementById("teams");
+  const elBoard = document.getElementById("boardGrid");
+
+  const modalBackdrop = document.getElementById("modalBackdrop");
+  const closeModalBtn = document.getElementById("closeModalBtn");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalMeta = document.getElementById("modalMeta");
+  const modalClue = document.getElementById("modalClue");
+  const modalAnswer = document.getElementById("modalAnswer");
+  const modalFlavor = document.getElementById("modalFlavor");
+  const answerCard = document.getElementById("answerCard");
+  const showAnswerBtn = document.getElementById("showAnswerBtn");
+  const markUsedBtn = document.getElementById("markUsedBtn");
+  const teamPick = document.getElementById("teamPick");
+
+  const toggleKaren = document.getElementById("toggleKaren");
+  const karenState = document.getElementById("karenState");
+
+  const resetBtn = document.getElementById("resetBtn");
+  const undoBtn = document.getElementById("undoBtn");
+  const clearUsedBtn = document.getElementById("clearUsedBtn");
+  const exportBtn = document.getElementById("exportBtn");
+  const importBtn = document.getElementById("importBtn");
+
+  const karenCardWrap = document.getElementById("karenCardWrap");
+  const karenText = document.getElementById("karenText");
+
+  const finalWagerCard = document.getElementById("finalWagerCard");
+  const wagerFields = document.getElementById("wagerFields");
+
+  let current = null; // {c, r}
+
+  // -----------------------------
+  // Render
+  // -----------------------------
+  function renderTeams(){
+    elTeams.innerHTML = "";
+    state.teams.forEach((t, i) => {
+      const wrap = document.createElement("div");
+      wrap.className = "team";
+
+      const name = document.createElement("input");
+      name.type = "text";
+      name.value = t.name;
+      name.addEventListener("input", () => {
+        state.teams[i].name = name.value || `Team ${i+1}`;
+        render();
+      });
+
+      const score = document.createElement("div");
+      score.className = "score";
+      score.textContent = formatScore(t.score);
+
+      const controls = document.createElement("div");
+      controls.className = "scoreControls";
+      controls.style.gridColumn = "1 / -1";
+
+      const plus50 = btn("+50", () => adjustScore(i, +50));
+      const minus50 = btn("-50", () => adjustScore(i, -50));
+      const plus100 = btn("+100", () => adjustScore(i, +100));
+      const minus100 = btn("-100", () => adjustScore(i, -100));
+      const zero = btn("Reset Team", () => {
+        const delta = -state.teams[i].score;
+        adjustScore(i, delta);
+      });
+
+      controls.append(plus50, minus50, plus100, minus100, zero);
+
+      wrap.append(name, score, controls);
+      elTeams.append(wrap);
+    });
+  }
+
+  function renderBoard(){
+    elBoard.innerHTML = "";
+
+    // Category headers
+    for(let c=0;c<categories.length;c++){
+      const cat = document.createElement("div");
+      cat.className = "cat";
+      cat.textContent = categories[c];
+      elBoard.append(cat);
+    }
+
+    // Tiles
+    for(let r=0;r<values.length;r++){
+      for(let c=0;c<categories.length;c++){
+        const tile = document.createElement("div");
+        tile.className = "tile" + (state.used[c][r] ? " used" : "");
+        tile.textContent = "$" + values[r];
+        tile.setAttribute("data-c", c);
+        tile.setAttribute("data-r", r);
+
+        tile.addEventListener("click", () => {
+          if(state.used[c][r]) return;
+          openClue(c, r);
+        });
+
+        elBoard.append(tile);
+      }
+    }
+  }
+
+  function render(){
+    toggleKaren.dataset.on = String(state.scorched);
+    karenState.textContent = state.scorched ? "ON" : "OFF";
+    renderTeams();
+    renderBoard();
+  }
+
+  function btn(label, onClick){
+    const b = document.createElement("button");
+    b.textContent = label;
+    b.addEventListener("click", onClick);
+    return b;
+  }
+
+  function formatScore(n){
+    const sign = n < 0 ? "-" : "";
+    const abs = Math.abs(n);
+    return sign + abs.toString();
+  }
+
+  // -----------------------------
+  // Modal logic
+  // -----------------------------
+  function openClue(c, r){
+    current = {c, r};
+
+    const item = board[c][r];
+    const isFinal = (c === 3 && r === 4);
+
+    modalTitle.textContent = isFinal ? "Final Jeopardy" : "Clue";
+    modalMeta.textContent = `${categories[c]} • $${values[r]}`;
+    modalClue.textContent = item.clue;
+
+    modalAnswer.textContent = item.answer;
+    modalFlavor.textContent = state.scorched ? item.flavorScorched : item.flavorClean;
+
+    answerCard.classList.remove("show");
+    answerCard.style.display = "none";
+
+    // Karen panel
+    if(state.scorched && item.karen){
+      karenCardWrap.style.display = "block";
+      karenText.textContent = item.karen;
+    } else {
+      karenCardWrap.style.display = "none";
+      karenText.textContent = "";
+    }
+
+    // Final Jeopardy wagers UI
+    if(isFinal){
+      finalWagerCard.style.display = "block";
+      buildWagerFields();
+    } else {
+      finalWagerCard.style.display = "none";
+      wagerFields.innerHTML = "";
+    }
+
+    // Buttons state
+    showAnswerBtn.textContent = "Show Answer";
+    showAnswerBtn.disabled = false;
+
+    teamPick.innerHTML = "";
+    teamPick.append(
+      document.createElement("span")
+    );
+    teamPick.firstChild.outerHTML = `<span class="small">Award points:</span>`;
+
+    const noOne = btn("No One", () => awardNoOne());
+    noOne.className = "danger";
+    teamPick.append(noOne);
+
+    state.teams.forEach((t, idx) => {
+      const b = btn(t.name || `Team ${idx+1}`, () => awardTeam(idx));
+      b.className = "ok";
+      teamPick.append(b);
+    });
+
+    modalBackdrop.classList.add("show");
+  }
+
+  function closeModal(){
+    modalBackdrop.classList.remove("show");
+    current = null;
+  }
+
+  function revealAnswer(){
+    answerCard.style.display = "block";
+    answerCard.classList.add("show");
+    showAnswerBtn.disabled = true;
+    showAnswerBtn.textContent = "Answer Shown";
+  }
+
+  function markUsed(){
+    if(!current) return;
+    state.used[current.c][current.r] = true;
+    render();
+    closeModal();
+  }
+
+  function awardNoOne(){
+    // Mark used, no score
+    markUsed();
+  }
+
+  function awardTeam(teamIndex){
+    if(!current) return;
+    const c = current.c, r = current.r;
+    const item = board[c][r];
+    const isFinal = (c === 3 && r === 4);
+
+    let delta = 0;
+
+    if(isFinal){
+      const wager = clampInt(state.finalWagers[teamIndex], 0, 10_000_000);
+      // For Final, we don't know if correct; we offer buttons:
+      // Here we prompt: correct? If OK then +wager else -wager.
+      const correct = confirm(`${state.teams[teamIndex].name} correct?\nOK = correct (+$${wager})\nCancel = incorrect (-$${wager})`);
+      delta = correct ? +wager : -wager;
+    } else {
+      delta = values[r];
+    }
+
+    adjustScore(teamIndex, delta);
+    state.used[c][r] = true;
+    render();
+    closeModal();
+  }
+
+  function adjustScore(teamIndex, delta){
+    state.teams[teamIndex].score += delta;
+    state.history.push({ teamIndex, delta });
+    // cap history
+    if(state.history.length > 200) state.history.shift();
+    renderTeams();
+  }
+
+  function undoScore(){
+    const last = state.history.pop();
+    if(!last) return;
+    state.teams[last.teamIndex].score -= last.delta;
+    renderTeams();
+  }
+
+  function clearUsed(){
+    state.used = Array.from({length: categories.length}, () => Array(values.length).fill(false));
+    renderBoard();
+  }
+
+  function resetAll(){
+    if(!confirm("Reset board + scores + wagers?")) return;
+    state = {
+      scorched: state.scorched,
+      teams: structuredClone(defaultTeams),
+      used: Array.from({length: categories.length}, () => Array(values.length).fill(false)),
+      history: [],
+      finalWagers: [0,0,0,0]
+    };
+    render();
+  }
+
+  function buildWagerFields(){
+    wagerFields.innerHTML = "";
+    state.teams.forEach((t, i) => {
+      const row = document.createElement("div");
+      row.className = "wagerRow";
+
+      const label = document.createElement("div");
+      label.innerHTML = `<strong>${escapeHtml(t.name || `Team ${i+1}`)}</strong> <span class="small">wager</span>`;
+
+      const input = document.createElement("input");
+      input.type = "number";
+      input.min = "0";
+      input.step = "50";
+      input.value = String(state.finalWagers[i] ?? 0);
+      input.addEventListener("input", () => {
+        state.finalWagers[i] = clampInt(input.value, 0, 10_000_000);
+      });
+
+      row.append(label, input);
+      wagerFields.append(row);
+    });
+  }
+
+  function clampInt(v, lo, hi){
+    const n = parseInt(v, 10);
+    if(Number.isNaN(n)) return lo;
+    return Math.max(lo, Math.min(hi, n));
+  }
+
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, (c) => ({
+      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+    }[c]));
+  }
+
+  // -----------------------------
+  // Export/Import state
+  // -----------------------------
+  function exportState(){
+    const payload = JSON.stringify({
+      scorched: state.scorched,
+      teams: state.teams,
+      used: state.used,
+      history: state.history,
+      finalWagers: state.finalWagers
+    }, null, 2);
+
+    const blob = new Blob([payload], {type:"application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "deez-nation-state.json";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  function importState(){
+    const pasted = prompt("Paste exported JSON state here:");
+    if(!pasted) return;
+    try{
+      const obj = JSON.parse(pasted);
+      if(!obj || typeof obj !== "object") throw new Error("Not an object");
+      // basic validation
+      state.scorched = !!obj.scorched;
+      state.teams = Array.isArray(obj.teams) ? obj.teams.map(t => ({
+        name: (t?.name ?? "").toString().slice(0, 40) || "Team",
+        score: Number(t?.score ?? 0) || 0
+      })) : structuredClone(defaultTeams);
+
+      state.used = Array.isArray(obj.used) ? obj.used : state.used;
+      state.history = Array.isArray(obj.history) ? obj.history : [];
+      state.finalWagers = Array.isArray(obj.finalWagers) ? obj.finalWagers : [0,0,0,0];
+
+      render();
+      alert("Imported.");
+    } catch(e){
+      alert("Could not import. Error: " + e.message);
+    }
+  }
+
+  // -----------------------------
+  // Events
+  // -----------------------------
+  toggleKaren.addEventListener("click", () => {
+    state.scorched = !state.scorched;
+    render();
+  });
+
+  resetBtn.addEventListener("click", resetAll);
+  undoBtn.addEventListener("click", undoScore);
+  clearUsedBtn.addEventListener("click", () => {
+    if(confirm("Clear used tiles (keep scores)?")) clearUsed();
+  });
+
+  exportBtn.addEventListener("click", exportState);
+  importBtn.addEventListener("click", importState);
+
+  closeModalBtn.addEventListener("click", closeModal);
+  modalBackdrop.addEventListener("click", (e) => {
+    if(e.target === modalBackdrop) closeModal();
+  });
+
+  showAnswerBtn.addEventListener("click", () => {
+    revealAnswer();
+  });
+
+  markUsedBtn.addEventListener("click", () => markUsed());
+
+  // Escape key closes modal
+  window.addEventListener("keydown", (e) => {
+    if(e.key === "Escape" && modalBackdrop.classList.contains("show")) closeModal();
+  });
+
+  // -----------------------------
+  // Init
+  // -----------------------------
+  render();
+})();
+</script>
+</body>
+</html>
